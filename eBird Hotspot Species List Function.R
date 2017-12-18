@@ -15,7 +15,7 @@ eBirdHotspotSpecies = function(hotspot){
   taxa = read_html(url) %>% # Selecting all species names from scraped text
     html_nodes('td.species-name') %>%
     html_text
-  listall = taxa # Carried over from other uses of this function
+  listall = taxa
   locSpeciesWoSp = listall[!grepl(' sp.', listall)] # Remove spuhs
   locSpeciesWoSlsh = locSpeciesWoSp[!grepl("[/]", locSpeciesWoSp)] # Remove slashes
   listwohyb = locSpeciesWoSlsh[!grepl("hybrid", locSpeciesWoSlsh)] # Remove hybrids
@@ -24,5 +24,3 @@ eBirdHotspotSpecies = function(hotspot){
   locSpecies = as.character(listwopar) # Converting to characted list
   return(locSpecies)
 }
-
-
